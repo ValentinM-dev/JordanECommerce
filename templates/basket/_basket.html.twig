@@ -1,0 +1,24 @@
+{% block body %}
+<div class="container mt-4">
+    <div class="row">
+        {% for basket in baskets %}
+            {% if basket.stock > 0 %}
+                <div class="col-md-4 d-flex justify-content-center mb-4">
+                    <div class="card bg-black text-white border-danger shadow-sm hover-translate" style="width: 18rem;">
+                        <img src="{{ basket.image }}" class="card-img-top border-bottom border-danger" alt="Jordan basket logo">
+                        <div class="card-body text-center">
+                            <h2 class="card-title text-danger">{{ basket.name }} {{ basket.taille }}</h2>
+                            <h5>{{ basket.prix }} €</h5>
+                            <h5>Stock : {{ basket.stock }}</h5>
+
+                            {# <a href="{{ path('/', { id: basket.id, type: 'basket' }) }}" class="btn btn-outline-danger mt-2">
+                            Ajouter au panier
+                            </a> #}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

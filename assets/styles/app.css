@@ -1,3 +1,6 @@
-body {
-    background-color: skyblue;
+.hover-translate:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px #DC143C;
+    border-color: #FFFFFF !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }

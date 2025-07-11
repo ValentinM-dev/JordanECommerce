@@ -1,0 +1,20 @@
+{% block body %}
+<div class="container mt-4">
+    <div class="row">
+        {% for vetement in vetements %}
+            {% if vetement.stock > 0 %}
+                <div class="col-md-4 d-flex justify-content-center mb-4">
+                    <div class="card border-2 shadow-sm bg-black text-white transition hover-translate rounded" style="width: 18rem; border-color: #DC143C;">
+                        <img src="{{ vetement.image }}" class="card-img-top border-bottom" alt="Jordan vetement logo" style="border-color: #DC143C;">
+                        <div class="card-body text-center">
+                            <h2 class="card-title text-danger">{{ vetement.name }} {{ vetement.taille }}</h2>
+                            <h5>{{ vetement.prix }} €</h5>
+                            <h5>Stock : {{ vetement.stock }}</h5>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+{% for produits in produit %}
+    <img src="{{produits.vetement.image}}" alt="" style="width:150px">
+    <h1 class="text-danger">{{produits.vetement.name}}</h1>
+    <img src="{{produits.basket.image}}" alt="" style="width:150px">
+    <h1 class="text-success">{{produits.basket.name}}</h1>
+{% endfor %}
+{% endblock %}

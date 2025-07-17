@@ -1,12 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Jordan's Eshop{% endblock %}
 
 {% block body %}
-{% for produits in produit %}
-    <img src="{{produits.vetement.image}}" alt="" style="width:150px">
-    <h1 class="text-danger">{{produits.vetement.name}}</h1>
-    <img src="{{produits.basket.image}}" alt="" style="width:150px">
-    <h1 class="text-success">{{produits.basket.name}}</h1>
-{% endfor %}
+<div class="container mt-4">
+    <div class="row">
+        {% for produits in produit %}
+            {% if produits.vetement.stock > 0 %}
+                <div class="col-md-4 mb-4">
+                    <div class="jordan-card">
+                        <span class="badge-jordan">Vêtement</span>
+                        <img src="{{ produits.vetement.image }}" alt="Image Vetement" class="jordan-img">
+                        <h3 class="jordan-title">{{ produits.vetement.name }}</h3>
+                        <p class="jordan-info">{{ produits.vetement.stock }} en stock</p>
+                        <p class="jordan-info">{{ produits.vetement.prix }} €</p>
+                        <form id="add-cart-{{ produits.vetement.id }}" method="post" action="{{ path('add_to_cart') }}">
+                        <input type="hidden" name="id" value="{{ produits.vetement.id }}">
+                        <input type="number" name="quantity" value="1" min="1" max="{{ produits.vetement.stock }}" class="form-control mb-2">
+                        </form>
+                        <a href="#" class="btn btn-outline-danger" onclick="document.getElementById('add-cart-{{ produits.vetement.id }}').submit(); return false;"> 🛒 Ajouter au panier</a>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if produits.basket.stock > 0 %}
+                <div class="col-md-4 mb-4">
+                    <div class="jordan-card">
+                        <span class="badge-jordan">Basket</span>
+                        <img src="{{ produits.basket.image }}" alt="Image Basket" class="jordan-img">
+                        <h3 class="jordan-title">{{ produits.basket.name }}</h3>
+                        <p class="jordan-info">{{ produits.basket.stock }} en stock</p>
+                        <p class="jordan-info">{{ produits.basket.prix }} €</p>
+                        <a href="{{ path('add_to_cart', {'id': produits.basket.id}) }}" class="btn btn-outline-danger">🛒 Ajouter au panier</a>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

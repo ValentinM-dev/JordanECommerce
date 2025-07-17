@@ -1,23 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Inscription - Jordan{% endblock %}
 
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
+<div class="jordan-page d-flex justify-content-center align-items-center">
+    <div class="jordan-form-wrapper p-4">
+        <h1 class="text-center mb-4 jordan-title">Créer un compte</h1>
 
-    <h1>Register</h1>
+        {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.email, {
+                attr: { class: 'form-control jordan-input' }
+            }) }}
 
-    {{ form_errors(registrationForm) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Mot de passe',
+                attr: { class: 'form-control jordan-input' }
+            }) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+            {{ form_row(registrationForm.agreeTerms, {
+                label: 'Accepter les conditions',
+                attr: { class: 'form-check-input jordan-check' }
+            }) }}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+            <button type="submit" class="btn jordan-btn w-100 mt-3">S’inscrire</button>
+        {{ form_end(registrationForm) }}
+    </div>
+</div>
 {% endblock %}

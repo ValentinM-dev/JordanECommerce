@@ -1,34 +1,41 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg" style="background-color: #DC143C;">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ path('app_home')}}">Jordan</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <a class="navbar-brand text-white fw-bold" href="{{ path('app_home')}}">Jordan</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ path('app_home')}}">Acceuil</a>
+                    <a class="nav-link text-white" href="{{ path('app_home')}}">Accueil</a>
                 </li>
-                {# <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Filtre
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ path('app_home', {type:'vetement'})}}">Vêtements</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ path('app_home', {type:'basket'})}}">Baskets</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Compte
                     </a>
-                <ul class="dropdown-menu">         
-                    <li><a class="dropdown-item text-info" href="{{ path('app_acceuil', {type:'vetement'})}}">Vetements</a></li>
-                    <li><a class="dropdown-item text-success" href="{{ path('app_acceuil', {type:'basket'})}}">Baskets</a></li>
-                </ul> #}
-        </div>
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Compte</a>
-                <ul class="dropdown-menu">         
-                    <li><a class="dropdown-item text-info" href="{{ path('app_register')}}">Inscription</a></li>
-                    <li><a class="dropdown-item text-success" href="{{ path('app_login')}}">Connexion</a></li>
-                {% if app.user %}
-                    <li class="nav-item">
-                    <a class="dropdown-item text-info" href="{{path('admin')}}">AdminPanel</a>
-                    </li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item text-danger" href="{{ path('app_logout')}}">Déconnexion</a></li>
-                {% endif %}
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item text-dark" href="{{ path('app_register')}}">Inscription</a></li>
+                        <li><a class="dropdown-item text-dark" href="{{ path('app_login')}}">Connexion</a></li>
+                        {% if app.user %}
+                            <li><a class="dropdown-item text-dark" href="{{path('admin')}}">AdminPanel</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="{{ path('app_logout')}}">Déconnexion</a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+
             </ul>
+        </div>
     </div>
 </nav>

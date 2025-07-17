@@ -28,11 +28,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private array $roles = ['ROLE_USER'];
 
     /**
-     * @var string The hashed password
+     * Le mot de passe hashé
      */
     #[ORM\Column]
     private ?string $password = null;
-
     #[ORM\Column]
     private bool $isVerified = false;
 
@@ -88,6 +87,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see PasswordAuthenticatedUserInterface
      */
+    public function getPlainPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPlainPassword(?string $plainPassword): static
+    {
+        $this->password = $plainPassword;
+        return $this;
+    }
+
+    /**
+     * Retourne le mot de passe hashé (obligatoire pour Symfony)
+     */
     public function getPassword(): ?string
     {
         return $this->password;
@@ -96,7 +109,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPassword(string $password): static
     {
         $this->password = $password;
-
         return $this;
     }
 

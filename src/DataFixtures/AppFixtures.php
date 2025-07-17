@@ -15,7 +15,7 @@ class AppFixtures extends Fixture
     {
         for ($i=1; $i <31 ; $i++) { 
             $vetement= new Vetement();
-            $vetement->setName('Jordan' .$i);
+            $vetement->setName('Vetement' .$i);
             $vetement->setPrix(random_int(35.00, 150.00));
             $vetement->setTaille("Taille" .$i);
             $vetement->setStock(random_int(0, 10));
@@ -26,7 +26,7 @@ class AppFixtures extends Fixture
 
         for ($i=1; $i <31 ; $i++) { 
             $basket= new Basket();
-            $basket->setName('Jordan' .$i);
+            $basket->setName('Basket' .$i);
             $basket->setPrix(random_int(35.00, 150.00));
             $basket->setTaille("Taille" .$i);
             $basket->setStock(random_int(0, 10));
@@ -38,7 +38,7 @@ class AppFixtures extends Fixture
 
         for ($i=1; $i < 7 ; $i++) { 
             $accessoire= new Accessoire();
-            $accessoire->setCasquette('Jordan' .$i);
+            $accessoire->setCasquette('' .$i);
             $manager->persist($accessoire);
             $accessoires[] = $accessoire;
         }
